@@ -61,6 +61,11 @@ app.get("/user/:id", (req,res) => {
         res.json(excistingId)
 })
 
+app.get("/search", (req,res) => {
+    const query = req.query
+    res.json(query)
+})
+
 // app.get("/", (req,res) => {
 //     res.json({name: "Nofal", age: "22"})
 // })
