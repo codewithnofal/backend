@@ -4,13 +4,15 @@ import cors from "cors";
 const app = express();
 const port = 8000;
 
-app.use(
-  cors({
-    origin: "http://localhost:5173",
-  })
-);
-
+let password = "nofal123";
 app.use(express.json());
+
+app.use((req, res, next) => {
+  if (req.body.pass != password) {
+    res.send("password does not match");
+  }
+  next();
+});
 
 app.get("/", (req, res) => {
   res.json({ name: "Nofal", age: 21 });
